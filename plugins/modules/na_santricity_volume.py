@@ -77,7 +77,7 @@ options:
             - Only relevant when the volume is created in a raidDiskPool.
             - I(raid1) in a raidDiskPool is newly introduced in Raider (12.00) CFW.
         type: str
-        choices: ["raid1", "raid6"]
+        choices: ["raid1", "raid5", "raid6"]
         required: false
     thin_provision:
         description:
@@ -334,7 +334,7 @@ class NetAppESeriesVolume(NetAppESeriesModule):
             size_tolerance_b=dict(type="int", required=False, default=10485760),
             segment_size_kb=dict(type="int", default=128, required=False),
             owning_controller=dict(type="str", choices=["A", "B"], required=False),
-            raid_level=dict(type="str", choices=["raid1", "raid6"], required=False),
+            raid_level=dict(type="str", choices=["raid1", "raid5", "raid6"], required=False),
             ssd_cache_enabled=dict(type="bool", default=False),
             data_assurance_enabled=dict(type="bool", default=False),
             thin_provision=dict(type="bool", default=False),
